@@ -6,8 +6,8 @@ release:
   name_template: '{{.Tag}}'
 brew:
   commit_author:
-    name: goreleaserbot
-    email: goreleaser@carlosbecker.com
+    name: Artemiy Ryabinkov
+    email: getlag@ya.ri
   install: bin.install "travis-play"
 builds:
 - goos:
@@ -18,7 +18,7 @@ builds:
   - amd64
   - "386"
   main: .
-  ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
+  ldflags: -s -w -X main.VERSION={{.Version}}
   binary: travis-play
   lang: go
 archive:
