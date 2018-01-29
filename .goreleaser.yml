@@ -44,9 +44,9 @@ fpm:
   maintainer: Artemiy Ryabinkov <getlag@ya.ru>
   description: Goreleaser usage example.
   license: MIT
-  formats:
-    - deb
-    - rpm
+  # formats:
+  #   - deb
+  #   - rpm
   bindir: /usr/local/bin
 snapcraft:
   name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
@@ -65,3 +65,15 @@ sign:
   - $artifact
   signature: ${artifact}.sig
   artifacts: none
+dockers:
+  -
+    binary: travis-play
+    goos: linux
+    goarch: amd64
+    goarm: ''
+    image: furdarius/travis-play
+    tag_templates:
+    - "{{ .Tag }}"
+    - "v{{ .Major }}"
+    - "v{{ .Major }}.{{ .Minor }}"
+    - latest
