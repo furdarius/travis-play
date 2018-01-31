@@ -7,7 +7,7 @@ release:
 brew:
   commit_author:
     name: Artemiy Ryabinkov
-    email: getlag@ya.ri
+    email: getlag@ya.ru
   install: bin.install "travis-play"
 builds:
 - goos:
