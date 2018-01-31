@@ -44,9 +44,9 @@ fpm:
   maintainer: Artemiy Ryabinkov <getlag@ya.ru>
   description: Goreleaser usage example.
   license: MIT
-  # formats:
-  #   - deb
-  #   - rpm
+  formats:
+    - deb
+    - rpm
   bindir: /usr/local/bin
 snapcraft:
   name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
