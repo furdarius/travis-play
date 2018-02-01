@@ -16,9 +16,5 @@ script:
   - fpm --help
   - go test -v -race -cpu=1,2 -tags integration -timeout 2s ./...
 
-deploy:
-  provider: script
-  script: curl -sL https://git.io/goreleaser | bash
-  skip_cleanup: true
-  on:
-    tags: true
+after_success:
+  - test "$TRAVIS_OS_NAME" = "linux" -a -n "$TRAVIS_TAG" && curl -sL https://git.io/goreleaser | bash
