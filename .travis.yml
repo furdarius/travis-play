@@ -11,14 +11,14 @@ go:
 
 before_install:
   - gem install --no-ri --no-rdoc fpm
-  - go get -u github.com/goreleaser/goreleaser
 
 script:
+  - fpm --help
   - go test -v -race -cpu=1,2 -tags integration -timeout 2s ./...
 
 deploy:
   provider: script
-  script: goreleaser
+  script: curl -sL https://git.io/goreleaser | bash
   skip_cleanup: true
   on:
     tags: true
