@@ -13,7 +13,6 @@ before_install:
   - gem install --no-ri --no-rdoc fpm
 
 script:
-  - fpm --help
   - go test -v -race -cpu=1,2 -tags integration -timeout 2s ./...
 
 after_success:
