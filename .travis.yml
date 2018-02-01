@@ -9,6 +9,9 @@ go:
   - 1.9.x
   - tip
 
+before_install:
+  - gem install fpm
+
 script:
   - go test -v -race -cpu=1,2 -tags integration -timeout 2s ./...
 
