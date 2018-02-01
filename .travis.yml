@@ -10,6 +10,8 @@ go:
   - tip
 
 before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y rpm
   - gem install --no-ri --no-rdoc fpm
 
 script:
