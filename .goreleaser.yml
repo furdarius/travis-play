@@ -9,6 +9,7 @@ brew:
     name: Artemiy Ryabinkov
     email: getlag@ya.ru
   install: bin.install "travis-play"
+  skip_upload: true
 builds:
 - goos:
   - linux
@@ -18,9 +19,10 @@ builds:
   - amd64
   - "386"
   main: .
-  ldflags: -s -w -X main.VERSION={{.Version}}
+  ldflags: -s -w -X main.version={{.Version}}
   binary: travis-play
-  lang: go
+  env:
+    - CGO_ENABLED=0
 archive:
   name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
     }}v{{ .Arm }}{{ end }}'
@@ -37,7 +39,7 @@ archive:
   format_overrides:
     - goos: windows
       format: zip
-fpm:
+nfpm:
   name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
     }}v{{ .Arm }}{{ end }}'
   homepage: https://github.com/furdarius/travis-play
@@ -48,11 +50,6 @@ fpm:
     - deb
     - rpm
   bindir: /usr/local/bin
-snapcraft:
-  name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
-    }}v{{ .Arm }}{{ end }}'
-snapshot:
-  name_template: SNAPSHOT-{{ .Commit }}
 checksum:
   name_template: '{{ .ProjectName }}_{{ .Version }}_checksums.txt'
 dist: dist
