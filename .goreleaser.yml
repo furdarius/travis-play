@@ -22,6 +22,7 @@ builds:
   ldflags: -s -w -X main.version={{.Version}}
   binary: travis-play
   env:
+    # https://github.com/goreleaser/goreleaser/issues/225
     - CGO_ENABLED=0
 archive:
   name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
