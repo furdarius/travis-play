@@ -26,6 +26,5 @@ deploy:
   script: curl -sL http://git.io/goreleaser | bash
   on:
     tags: true
-    condition: $TRAVIS_OS_NAME = linux
-    go: 1.10.x
+    condition: $TRAVIS_OS_NAME = linux AND $TRAVIS_GO_VERSION =~ ^1\.10\.[0-9]+$
 
