@@ -1,9 +1,9 @@
 language: go
 
 go:
-  - 1.9.x
-  - 1.10.x
-  - tip
+  - '1.9.x'
+  - '1.10.x'
+  - 'tip'
 
 addons:
   apt:
@@ -26,7 +26,6 @@ deploy:
   script: curl -sL http://git.io/goreleaser | bash
   on:
     tags: true
-    condition:
-      - $TRAVIS_OS_NAME = linux
-      - $TRAVIS_GO_VERSION =~ ^1\.10\.[0-9]+$
+    condition: $TRAVIS_OS_NAME = linux
+    go: '1.10.x'
 
